@@ -7,6 +7,8 @@ var AuthenticationController = require('./controllers/authentication'),
 var requireAuth = passport.authenticate('jwt', {session: false}),
     requireLogin = passport.authenticate('local', {session: false});
 
+passport.initialize();
+
 module.exports = function(app){
 
     var apiRoutes = express.Router(),
