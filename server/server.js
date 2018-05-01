@@ -21,7 +21,7 @@ mongoose.connection.on('open', function() {
   app.use(logger('dev')); // Log requests to API using morgan
   app.use(cors());
 
-  var originsWhitelist = [
+  /*var originsWhitelist = [
   'http://localhost:8100',      //this is my front-end url for development
   ];
   var corsOptions = {
@@ -32,11 +32,11 @@ mongoose.connection.on('open', function() {
     credentials:true
   }
   //here is the magic
-  app.use(cors(corsOptions));
+  app.use(cors(corsOptions)); */
 
   app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8100');
+    res.header('Access-Control-Allow-Headers', 'Origin, x-Requested-With, x-requested-by, Content-Type, Accept, Authorization');
     if (req.method === 'OPTIONS') {
         res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
         return res.status(200).json({});
